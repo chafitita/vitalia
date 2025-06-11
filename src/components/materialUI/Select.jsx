@@ -13,6 +13,8 @@ export default function BasicSelect() {
   const handleChange = (event) => {
     setSpecialty(event.target.value);
   };
+  
+  //PEDIDO A LA BD DE ESPECIALIDADES
 
   const specialtyNames = [ // Renombramos 'names' a 'specialtyNames' para mayor claridad
     'Alergeología',

@@ -1,6 +1,6 @@
-import  Select  from "./materialUI/Select";
+import  Select  from "../components/materialUI/Select";
 import "../css/App.css"
-import Pasos from "./materialUI/Pasos";
+import Pasos from "../components/materialUI/Pasos";
 
 export const Especialidad = () => {
   return(
