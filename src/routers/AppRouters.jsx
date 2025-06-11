@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router"
 
-import { Home } from "../components/Home"
-import { Especialidad }  from "../components/Especialidad"
+import { Home } from "../routers/Home"
+import { Especialidad }  from "../routers/Especialidad"
 
 export const AppRouters = () => {
   return (
