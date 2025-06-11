@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+/* ----------------- home --------------------- */
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    font-family: "Mukta Vaani", sans-serif;
+}
+.title{
+    font-family: "Montserrat Alternates", sans-serif;
+    position: absolute;
+    align-self:self-start;
+    top: 4vh;
+    left: 2vw;
+}
+.title h2{
+    font-weight: 500;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content p{
+    font-weight: 300;
+}
+.content h1{
+    font-weight: 500;
+}
+.content button{
+    font-family: "Mukta Vaani", sans-serif;
+    font-weight: 500;
+    margin-top: 5vh;
+    padding: 0.75vw;
+    border-radius: 2.5vw;
+    border: none;
+    background-color: #279281;
+    cursor: pointer;
+}
+.content button:hover{
+    background-color: #238575;
+}
+/* ------------------------Especialidad---------------------- */
+.sub-title{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
