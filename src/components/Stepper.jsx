@@ -5,7 +5,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import { Navigate } from 'react-router';
-
+//hola
 const steps = ['Paso 1', 'Paso 2', 'Paso 3', 'Paso 4'];
 
 export default function HorizontalLinearStepper() {
