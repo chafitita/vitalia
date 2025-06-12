@@ -1,7 +1,5 @@
-import  Select  from "../components/Select";
-import Stepper from "../components/Stepper"
+import  Select  from "../components/materialUI/Select";
 import "../css/App.css"
-
 
 export const Especialidad = () => {
   return(
