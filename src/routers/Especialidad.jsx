@@ -1,7 +1,6 @@
 import  Select  from "../components/Select";
 import "../css/App.css"
 
-
 export const Especialidad = () => {
   return(
     <>

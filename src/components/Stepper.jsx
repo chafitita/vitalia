@@ -4,7 +4,6 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
-
 import { useNavigate, useLocation, Outlet } from 'react-router';
 
 const steps = [
@@ -21,6 +20,7 @@ export default function HorizontalLinearStepper() {
     if (currentIndex !== -1) setActiveStep(currentIndex);
     else if (location.pathname === "/pasos") navigate(steps[0].path);
   }, [location.pathname, navigate]);
+
 
   const handleNext = () => {
     if(activeStep < steps.length - 1){
