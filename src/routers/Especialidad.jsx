@@ -1,5 +1,4 @@
 import  Select  from "../components/Select";
-import Stepper from "../components/Stepper"
 import "../css/App.css"
 
 
