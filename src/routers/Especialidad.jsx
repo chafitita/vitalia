@@ -1,4 +1,4 @@
-import  Select  from "../components/materialUI/Select";
+import  Select  from "../components/Select";
 import "../css/App.css"
 
 export const Especialidad = () => {
