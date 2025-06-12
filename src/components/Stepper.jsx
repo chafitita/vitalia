@@ -4,50 +4,34 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
-import { Navigate } from 'react-router';
 
-const steps = ['Paso 1', 'Paso 2', 'Paso 3', 'Paso 4'];
+import { useNavigate, useLocation, Outlet } from 'react-router';
+
+const steps = [
+  {label: "Paso 1", path: "/pasos/especialidad"},
+]
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
+  React.useEffect(()=>{
+    const currentIndex = steps.findIndex(step => step.path === location.pathname);
+    if (currentIndex !== -1) setActiveStep(currentIndex);
+    else if (location.pathname === "/pasos") navigate(steps[0].path);
+  }, [location.pathname, navigate]);
 
   const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
+    if(activeStep < steps.length - 1){
+      navigate(steps[activeStep + 1].path)
     }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
+    if(activeStep > 0){
+      navigate(steps[activeStep - 1].path)
     }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
   };
 
   const handleReset = () => {
@@ -56,26 +40,28 @@ export default function HorizontalLinearStepper() {
 
   return (
     <Box sx={{ 
-        display: 'inline-flex',
+        display: 'flex',
         width: '50%',
         alignItems: 'center', 
         justifyContent: 'center',
         flexDirection: 'column'}}>
       <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
+        {steps.map((step) => {
           const stepProps = {};
           const labelProps = {};
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
           return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
+            <Step key={step.label} {...stepProps}>
+              <StepLabel {...labelProps}>{step.label}</StepLabel>
             </Step>
           );
         })}
       </Stepper>
         <React.Fragment>
+
+          <Box>
+            <Outlet />
+          </Box>
+
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button
               color="inherit"
