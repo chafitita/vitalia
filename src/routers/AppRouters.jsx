@@ -1,13 +1,20 @@
-import { Route, Routes } from "react-router"
+import { Route, Routes, Navigate } from "react-router"
+import HorizontalLinearStepper from "../components/Stepper"
+import { Home } from "./Home"
+import { Especialidad }  from "./Especialidad"
 
-import { Home } from "../routers/Home"
-import { Especialidad }  from "../routers/Especialidad"
 
 export const AppRouters = () => {
   return (
     <Routes>
         <Route path="/" element={<Home />}>Home</Route>
-        <Route path="/especialidad" element={<Especialidad />}>Especialidad</Route>
+
+        <Route path="/especialidad" element={<Navigate to="/pasos/especialidad" replace />} />
+
+        <Route path="/pasos" element={<HorizontalLinearStepper />}>
+          <Route path="especialidad" element={<Especialidad />}/>
+        </Route>
+
     </Routes>
   )
 }
