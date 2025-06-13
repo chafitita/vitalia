@@ -8,6 +8,7 @@ import { useNavigate, useLocation, Outlet } from 'react-router';
 
 const steps = [
   {label: "Paso 1", path: "/pasos/especialidad"},
+  {label: "Paso 2", path: "/pasos/doctor"},
 ]
 
 export default function HorizontalLinearStepper() {
