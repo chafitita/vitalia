@@ -42,7 +42,7 @@ export default function HorizontalLinearStepper() {
   return (
     <Box sx={{ 
         display: 'flex',
-        width: '50%',
+        width: '100%',
         alignItems: 'center', 
         justifyContent: 'center',
         flexDirection: 'column'}}>
@@ -63,17 +63,16 @@ export default function HorizontalLinearStepper() {
             <Outlet />
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2}}>
             <Button
-              color="inherit"
               disabled={activeStep === 0}
               onClick={handleBack}
-              sx={{ mr: 1 }}
+              sx={{ mr: 1, color: 'white'}}
             >
               Back
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleNext}>
+            <Button onClick={handleNext} sx={{color: 'white'}}>
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
           </Box>

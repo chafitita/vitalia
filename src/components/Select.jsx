@@ -53,13 +53,13 @@ export default function BasicSelect() {
     }}>
       <FormControl sx={{
         m: 0, // Sin margen adicional
-        width: 200, // Ancho fijo para el select
+        width: '40rem', // Ancho fijo para el select
       }}>
         {/* Etiqueta del Select */}
         <InputLabel
           id="basic-select-label"
           sx={{
-            color: 'white', // Texto blanco
+            color: 'black', // Texto blanco
             fontWeight: 'bold', // Negrita
             position: 'relative', // Para posicionar libremente
             transform: 'none', // Resetear la transformación predeterminada de Material-UI
@@ -91,11 +91,12 @@ export default function BasicSelect() {
               padding: '10px 15px', // Relleno para que parezca una pill
               borderRadius: '30px', // Bordes redondeados
               backgroundColor: '#e0e0e0', // Fondo gris claro de la pill
-              color: '#333', // Color del texto
+              color: '#008E78', // Color del texto
               fontWeight: 'bold', // Texto negrita
               border: 'none', // Sin borde por defecto
               display: 'flex', // Para alinear el texto si es necesario
               alignItems: 'center',
+              alignSelf: 'center'
             },
             '& .MuiOutlinedInput-notchedOutline': { // Eliminar el borde del OutlinedInput
               border: 'none',
@@ -120,7 +121,7 @@ export default function BasicSelect() {
               key={name}
               value={name}
               sx={{
-                backgroundColor: '#e0e0e0', // Fondo gris claro para los items del menú
+                backgroundColor: 'white', // Fondo gris claro para los items del menú
                 color: '#333', // Color del texto oscuro
                 borderRadius: '30px', // Bordes redondeados para cada item
                 padding: '10px 15px', // Relleno para que parezcan pills
