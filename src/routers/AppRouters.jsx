@@ -5,6 +5,7 @@ import { Especialidad }  from "./Especialidad"
 import { Doctor } from "./Doctor"
 import { FechaHorario } from "./FechaHorario"
 import { Confirmación } from "./Confirmación"
+import { Finalización } from "./finalización"
 
 
 export const AppRouters = () => {
@@ -23,6 +24,7 @@ export const AppRouters = () => {
           <Route path="doctor" element={<Doctor />}/>
           <Route path="fecha-horario" element={<FechaHorario />}/>
           <Route path="confirmación" element={<Confirmación />}/>
+          <Route path="finalización" element={<Finalización />}/>
         </Route>
 
     </Routes>

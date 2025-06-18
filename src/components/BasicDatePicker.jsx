@@ -9,17 +9,25 @@ import dayjs from 'dayjs';
 import '../css/BasicDatePicker.css'
 
 import '../css/App.css'
-import { useState } from 'react';
+import { useContext } from 'react';
+import { VitaliaContext } from '../contexts/vitaliaContext';
+
 
 export default function BasicDatePicker() {
 
-  const [selectedDate, setSelectedDate] = useState(null)
+  const {fecha, setFecha, horario, setHorario} = useContext(VitaliaContext)
 
-  const allAvailableHours=[
+  // LLAMADO A LA BD
+
+  const horariosDisponibles=[
     '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', 
   ]
 
-  const displayHours = selectedDate ? allAvailableHours : []
+  const mostrarHorarios = fecha ? horariosDisponibles : []
+
+  const handleClickHorario = (horario) => {
+    setHorario(horario);
+  }
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -29,8 +37,8 @@ export default function BasicDatePicker() {
       }}>
         <DatePicker
           label="Elegí una fecha"
-          value={selectedDate}
-          onChange={(newValue) => setSelectedDate(newValue)}
+          value={fecha}
+          onChange={(newValue) => setFecha(newValue)}
           sx={{
             color: 'black',
             '& .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
@@ -55,12 +63,13 @@ export default function BasicDatePicker() {
             Horarios disponibles para {selectedDate ? selectedDate.format('DD/MM/YYYY') : 'la fecha seleccionada'}
           </Typography> */}
 
-          {displayHours.length > 0 ? (
+          {mostrarHorarios.length > 0 ? (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
-              {displayHours.map((hour, index) => (
+              {mostrarHorarios.map((horario, index) => (
                 <Button
                   key={index}
                   variant="contained"
+                  onClick={() => handleClickHorario(horario)}
                   sx={{
                     backgroundColor: '#00C3A5',
                     color: 'white',
@@ -72,7 +81,7 @@ export default function BasicDatePicker() {
                     },
                   }}
                 >
-                  {hour}
+                  {horario}
                 </Button>
               ))}
             </Box>
