@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Grid, Dialog, DialogTitle, DialogContent, Typography } from '@mui/material';
 import DoctorCard from './DoctorCard';
 
+import '../css/DoctorList.css'
+
 const doctores = [
   { nombre: 'Mateo Levrino', clinica: 'Clínica Amarilla', consultorio:'A3' },
   { nombre: 'Maria Romera', clinica: 'Clínica Azul' , consultorio:'C2'},

@@ -6,9 +6,13 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import { useNavigate, useLocation, Outlet } from 'react-router';
 
+import '../css/Stepper.css'
+
 const steps = [
   {label: "Paso 1", path: "/pasos/especialidad"},
   {label: "Paso 2", path: "/pasos/doctor"},
+  {label: "Paso 3", path: "/pasos/fecha-horario"},
+  {label: "Paso 4", path: "/pasos/confirmación"},
 ]
 
 export default function HorizontalLinearStepper() {
@@ -33,10 +37,6 @@ export default function HorizontalLinearStepper() {
     if(activeStep > 0){
       navigate(steps[activeStep - 1].path)
     }
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
   };
 
   return (

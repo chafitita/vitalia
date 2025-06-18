@@ -6,6 +6,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useTheme } from '@mui/material/styles'; // Importamos useTheme para los estilos de MenuItem
 
+import '../css/Select.css'
+
 export default function BasicSelect() {
   const theme = useTheme(); // Obtenemos el tema para usarlo en los estilos
   const [specialty, setSpecialty] = React.useState(''); // Cambiado a 'specialty' para mayor claridad
@@ -34,7 +36,7 @@ export default function BasicSelect() {
   const MenuProps = {
     PaperProps: {
       style: {
-        maxHeight: 250, // Ejemplo: altura máxima del menú
+        maxHeight: 200, // Ejemplo: altura máxima del menú
         width: 200,    // Ancho del menú
         borderRadius: '10px', // Bordes redondeados para el Paper del menú
       },
@@ -103,6 +105,7 @@ export default function BasicSelect() {
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': { // Asegurarse de que no aparezca el borde al enfocar
               border: 'none',
+              borderRadius: '30px',
             },
             '& .MuiSvgIcon-root': { // Estilo del icono de la flecha
               color: '#333', // Color de la flecha
@@ -125,7 +128,7 @@ export default function BasicSelect() {
                 color: '#333', // Color del texto oscuro
                 borderRadius: '30px', // Bordes redondeados para cada item
                 padding: '10px 15px', // Relleno para que parezcan pills
-                margin: '5px 10px', // Margen entre las pills en el menú
+                margin: '0px 0px', // Margen entre las pills en el menú
                 display: 'flex', // Para que el texto se centre bien
                 justifyContent: 'center', // Centrar horizontalmente
                 '&.Mui-selected': { // Estilo para el item seleccionado

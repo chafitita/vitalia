@@ -1,0 +1,19 @@
+.css-kcwvrz-MuiStack-root{
+    flex-direction: column !important;
+    gap: 1em;
+    align-items: center;
+}
+.css-kcwvrz-MuiStack-root>.MuiTextField-root, .css-kcwvrz-MuiStack-root>.MuiPickersTextField-root{
+    margin-top: 0.5em;
+}
+.css-1scrdjy{
+    margin-left: 0px !important;
+    background-color: transparent !important;
+}
+.css-1hxdzvw-MuiButtonBase-root-MuiButton-root{
+    color: #00C3A5 !important;
+    background-color: white !important;
+}
+.css-1hxdzvw-MuiButtonBase-root-MuiButton-root:hover{
+    background-color: #cbcbcb !important;
+}

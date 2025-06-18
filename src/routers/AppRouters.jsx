@@ -3,6 +3,8 @@ import HorizontalLinearStepper from "../components/Stepper"
 import { Home } from "./Home"
 import { Especialidad }  from "./Especialidad"
 import { Doctor } from "./Doctor"
+import { FechaHorario } from "./FechaHorario"
+import { Confirmación } from "./Confirmación"
 
 
 export const AppRouters = () => {
@@ -19,6 +21,8 @@ export const AppRouters = () => {
         <Route path="/pasos" element={<HorizontalLinearStepper />}>
           <Route path="especialidad" element={<Especialidad />}/>
           <Route path="doctor" element={<Doctor />}/>
+          <Route path="fecha-horario" element={<FechaHorario />}/>
+          <Route path="confirmación" element={<Confirmación />}/>
         </Route>
 
     </Routes>

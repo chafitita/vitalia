@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router"
 
+import '../css/App.css'
+
 export const Home = () => {
 
   const navigate = useNavigate()

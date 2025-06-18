@@ -1,0 +1,46 @@
+.css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper{
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+.css-lt8fx-MuiButtonBase-root-MuiMenuItem-root.Mui-selected{
+    background-color: #279281 !important;
+}
+.css-1toxriw-MuiList-root-MuiMenu-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.40em;
+}
+
+/* barra de navegación */
+
+.MuiPaper-root.MuiPopover-paper.MuiMenu-paper {
+  box-shadow: none !important;
+  background-color: transparent !important; 
+  scrollbar-width: thin;
+  scrollbar-color: #008E78 transparent; 
+}
+
+.MuiPaper-root.MuiPopover-paper.MuiMenu-paper::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+.MuiPaper-root.MuiPopover-paper.MuiMenu-paper::-webkit-scrollbar-track {
+  background-color: transparent; 
+  border-radius: 10px;
+}
+
+.MuiPaper-root.MuiPopover-paper.MuiMenu-paper::-webkit-scrollbar-thumb {
+  background-color: #008E78;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.MuiPaper-root.MuiPopover-paper.MuiMenu-paper::-webkit-scrollbar-button {
+  display: none;
+}
+
+.MuiPaper-root.MuiPopover-paper.MuiMenu-paper::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
