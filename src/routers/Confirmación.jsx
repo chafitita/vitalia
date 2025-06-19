@@ -6,7 +6,7 @@ export const Confirmación = () => {
     <>
       <div className="main">
         <div className="data-content">
-          <h1>Paso 4</h1>
+          <h1 className='title-confirmation'>Paso 5</h1>
           <h2 className="sub-title">Confirmar datos</h2>
           <ShiftCard />
         </div>

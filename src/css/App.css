@@ -4,6 +4,9 @@
     box-sizing: border-box;
     color: white;
 }
+.turno-button:hover{
+    background-color: #279281 !important;
+}
 /* ----------------- home --------------------- */
 .main{
     display: flex;
@@ -53,4 +56,10 @@
     font-weight: 500;
     font-size: 1.3em;
     margin-bottom: 1.5rem;
+    text-align: center;
+}
+/*--------------------CONFIRMACIÓN---------------------*/
+
+.title-confirmation{
+    text-align: center;
 }

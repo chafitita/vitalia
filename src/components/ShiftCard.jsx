@@ -28,10 +28,10 @@ export default function ShiftCard(){
         <Card sx={{ maxWidth: 400, margin: 'auto', p: 2, display: 'scroll' }}>
             <CardContent>
                 <Typography variant='subtitle1' color='text.secondary'>Datos del paciente:</Typography>
-                <Typography color='textSecondary' variant='subtitle2' gutterBottom>Nombre: {nombre || 'No ingresado'}</Typography>
-                <Typography color='textSecondary' variant='subtitle2' gutterBottom>Apellido: {apellido || 'No ingresado'}</Typography>
-                <Typography color='textSecondary' variant='subtitle2' gutterBottom>DNI: {dni || 'No ingresado'}</Typography>
-                <Typography color='textSecondary' variant='subtitle2' gutterBottom>E-mail: {email || 'No ingresado'}</Typography>
+                <Typography color='textSecondary' variant='subtitle1' gutterBottom>Nombre: {nombre || 'No ingresado'}</Typography>
+                <Typography color='textSecondary' variant='subtitle1' gutterBottom>Apellido: {apellido || 'No ingresado'}</Typography>
+                <Typography color='textSecondary' variant='subtitle1' gutterBottom>DNI: {dni || 'No ingresado'}</Typography>
+                <Typography color='textSecondary' variant='subtitle1' gutterBottom>E-mail: {email || 'No ingresado'}</Typography>
 
                 <Typography variant='subtitle1' color='text.secondary'>Especialidad:</Typography>
                 <Typography variant='h6' color='black' gutterBottom>{especialidadElegida ? especialidadElegida.nombre : 'No seleccionada'}</Typography>
