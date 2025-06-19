@@ -9,19 +9,26 @@ import dayjs from 'dayjs';
 import '../css/BasicDatePicker.css'
 
 import '../css/App.css'
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import { VitaliaContext } from '../contexts/vitaliaContext';
 
 
 export default function BasicDatePicker() {
 
-  const {fecha, setFecha, horario, setHorario} = useContext(VitaliaContext)
+  const {fecha, setFecha, horario, setHorario, doctorElegido} = useContext(VitaliaContext)
+  const [horariosDisponibles, setHorariosDisponibles] = useState([])
 
-  // LLAMADO A LA BD
-
-  const horariosDisponibles=[
-    '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', 
-  ]
+    useEffect(() => {
+    axios.get(`http://localhost:8080/horarios?doctorId=${doctorElegido.id}`)
+      .then((data) => {
+        console.log("horarios", data.data) 
+        setHorariosDisponibles(data.data)
+      })
+      .catch((error) => {
+        console.log("Error!:", error)
+      })
+  }, [doctorElegido]);
 
   const mostrarHorarios = fecha ? horariosDisponibles : []
 
@@ -81,7 +88,7 @@ export default function BasicDatePicker() {
                     },
                   }}
                 >
-                  {horario}
+                  {horario.hora}
                 </Button>
               ))}
             </Box>

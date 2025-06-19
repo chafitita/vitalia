@@ -17,23 +17,14 @@ export function VitaliaContextProvider(props){
 
     const handleEspecialidades = () => {
         axios.get(`http://localhost:8080/especialidades/`)
-              .then((data) => {
-                console.log("especialidades", data.data) 
-                setEspecialidad(data.data)
-              })
-              .catch((error) => {
-                console.log("Error!:", error)
-              })
+        .then((data) => {
+          console.log("especialidades", data.data) 
+          setEspecialidad(data.data)
+        })
+        .catch((error) => {
+          console.log("Error!:", error)
+        })
     }
-    const handleHorarios = () => {
-        axios.get(`http://localhost:8080/horarios/`)
-              .then((data) => {
-                console.log("horarios", data.data) 
-                setHorario(data.data)
-              })
-              .catch((error) => {
-                console.log("Error!:", error)
-              })
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
@@ -54,7 +45,6 @@ export function VitaliaContextProvider(props){
 
     useEffect(() => {
         handleEspecialidades();
-        handleHorarios();
     }, []);
 
     const VitaliaData = {
@@ -62,10 +52,8 @@ export function VitaliaContextProvider(props){
         doctor, setDoctor,
         fecha, setFecha,
         horario, setHorario,
-
         especialidadElegida, setEspecialidadElegida,
-        doctorElegido, setDoctorElegido
-
+        doctorElegido, setDoctorElegido,
         nombre, setNombre,
         apellido, setApellido,
         email, setEmail,
