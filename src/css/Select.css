@@ -44,3 +44,9 @@
 .MuiPaper-root.MuiPopover-paper.MuiMenu-paper::-webkit-scrollbar-corner {
   background-color: transparent;
 }
+
+.especialidad-button{
+  justify-content: center;
+  font-size: 1rem !important;
+  margin-left: 0.25rem;
+}

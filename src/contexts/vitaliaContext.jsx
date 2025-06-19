@@ -12,6 +12,7 @@ export function VitaliaContextProvider(props){
     const [doctorElegido, setDoctorElegido] = useState([])
     const [fecha, setFecha] = useState(null)
     const [horario, setHorario] = useState([])
+    const [horarioElegido, setHorarioElegido] = useState(null)
 
     //llamados al back
 
@@ -25,6 +26,17 @@ export function VitaliaContextProvider(props){
           console.log("Error!:", error)
         })
     }
+    const handleHorarios = () => {
+    // Aquí puedes necesitar pasar el doctor o la fecha para obtener horarios específicos
+    axios.get(`http://localhost:8080/horarios/`)
+      .then((data) => {
+        console.log("horarios", data.data);
+        setHorario(data.data);
+      })
+      .catch((error) => {
+        console.error("Error al obtener horarios:", error);
+      });
+  };
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
@@ -58,6 +70,7 @@ export function VitaliaContextProvider(props){
         apellido, setApellido,
         email, setEmail,
         dni, setDni,
+        horarioElegido, setHorarioElegido,
         resetTurno
 
     }

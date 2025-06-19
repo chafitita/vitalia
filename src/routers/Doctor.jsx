@@ -11,7 +11,6 @@ export const Doctor = () => {
               <h2 className="sub-title">Elige el médico que te atenderá</h2>
               <DoctorList />
             </div>
-
         </div>
     </>
   )
