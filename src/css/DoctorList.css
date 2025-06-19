@@ -1,3 +1,17 @@
 .css-1ts58i8-MuiGrid-root{
     border-top: 1px white solid;
 }
+.css-1kbb3gh-MuiPaper-root-MuiCard-root {
+    margin-top: 0.6rem !important;
+    padding: 0.5rem !important; 
+}
+.css-1kbb3gh-MuiPaper-root-MuiCard-root h6{
+   font-size: 1.2rem !important; 
+}
+.css-1kbb3gh-MuiPaper-root-MuiCard-root p{
+   font-size: 0.9rem !important; 
+}
+
+.css-1lt5qva-MuiCardContent-root:last-child{
+    padding: 1rem !important;
+}

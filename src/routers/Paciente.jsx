@@ -1,4 +1,5 @@
 import '../css/App.css'
+import '../css/Paciente.css'
 import PacientData from '../components/PacientData'
 
 export const Paciente = () => {
@@ -8,8 +9,9 @@ export const Paciente = () => {
             <div className="content">
                 <h1>Paso 4</h1>
                 <h2 className="sub-title">Ingrese sus datos</h2>
+              <PacientData />                
             </div>
-            <PacientData />
+
         </div>
     </>
   )

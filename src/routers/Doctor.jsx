@@ -9,8 +9,9 @@ export const Doctor = () => {
             <div className="content">
               <h1>Paso 2</h1>
               <h2 className="sub-title">Elige el médico que te atenderá</h2>
+              <DoctorList />
             </div>
-            <DoctorList />
+
         </div>
     </>
   )

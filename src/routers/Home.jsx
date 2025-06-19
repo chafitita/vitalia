@@ -18,7 +18,7 @@ export const Home = () => {
         <div className="content">
             <h1>BIENVENIDO/A</h1>
             <p>¿Qué deseás hacer hoy?</p>
-            <button onClick={handleClick}>
+            <button onClick={handleClick} className="turno-button">
                 Quiero sacar un turno
             </button>
         </div>

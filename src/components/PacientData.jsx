@@ -98,12 +98,6 @@ export default function PacientData() {
       setMessage('Paciente creado exitosamente.');
       setMessageType('success');
 
-      // Limpiar formulario
-      setNombre('');
-      setApellido('');
-      setDni('');
-      setEmail('');
-      setErrors({});
     } catch (error) {
       if (error.response && error.response.status === 400) {
         // Errores de validación del back c/express-validator
@@ -198,7 +192,7 @@ export default function PacientData() {
         </Typography>
       )}
 
-      <Button
+      <Button className='confirm-patient-button'
         variant="contained"
         sx={{
           backgroundColor: '#00C3A5',
