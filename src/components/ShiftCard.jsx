@@ -10,14 +10,16 @@ export default function ShiftCard(){
         navigate('/pasos/finalización')
     }
 
-    // const handleConfirmacion () => {
-        // aca iría el put de turno?
-    // }
-
-    const { especialidad, doctor, fecha, horario, resetTurno } = useContext(VitaliaContext)
+    const { especialidad, doctor, fecha, horario, nombre, apellido, dni, email } = useContext(VitaliaContext)
     return(
         <Card sx={{ maxWidth: 400, margin: 'auto', p: 2 }}>
             <CardContent>
+                <Typography variant='subtitle1' color='text.secondary'>Paciente:</Typography>
+                <Typography variant='h6' color='black' gutterBottom>{nombre || 'No seleccionada'}</Typography>
+                <Typography variant='h6' color='black' gutterBottom>{apellido || 'No seleccionada'}</Typography>
+                <Typography variant='h6' color='black' gutterBottom>{dni || 'No seleccionada'}</Typography>
+                <Typography variant='h6' color='black' gutterBottom>{email || 'No seleccionada'}</Typography>
+
                 <Typography variant='subtitle1' color='text.secondary'>Especialidad:</Typography>
                 <Typography variant='h6' color='black' gutterBottom>{especialidad || 'No seleccionada'}</Typography>
 

@@ -34,6 +34,22 @@ export function VitaliaContextProvider(props){
               .catch((error) => {
                 console.log("Error!:", error)
               })
+
+    const [nombre, setNombre] = useState('')
+    const [apellido, setApellido] = useState('')
+    const [email, setEmail] = useState('')
+    const [dni, setDni] = useState('')
+
+    const resetTurno = () => {
+        setEspecialidad('')
+        setDoctor('')
+        setFecha(null)
+        setHorario('')
+        setNombre('')
+        setApellido('')
+        setEmail('')
+        setDni('')
+
     }
 
     useEffect(() => {
@@ -46,8 +62,16 @@ export function VitaliaContextProvider(props){
         doctor, setDoctor,
         fecha, setFecha,
         horario, setHorario,
+
         especialidadElegida, setEspecialidadElegida,
         doctorElegido, setDoctorElegido
+
+        nombre, setNombre,
+        apellido, setApellido,
+        email, setEmail,
+        dni, setDni,
+        resetTurno
+
     }
     return(
         <VitaliaContext.Provider value={VitaliaData}>{props.children}</VitaliaContext.Provider>

@@ -12,7 +12,8 @@ const steps = [
   {label: "Paso 1", path: "/pasos/especialidad"},
   {label: "Paso 2", path: "/pasos/doctor"},
   {label: "Paso 3", path: "/pasos/fecha-horario"},
-  {label: "Paso 4", path: "/pasos/confirmación"},
+  {label: "Paso 4", path: "/pasos/paciente"},
+  {label: "Paso 5", path: "/pasos/confirmación"},
 ]
 
 export default function HorizontalLinearStepper() {
