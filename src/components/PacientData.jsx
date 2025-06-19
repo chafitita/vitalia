@@ -1,29 +1,26 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { useContext, useState } from 'react'; // Importar useState para errores de validación y carga
+import { useContext, useState } from 'react'; 
 import { VitaliaContext } from '../contexts/vitaliaContext';
-import { Button, CircularProgress, Typography } from '@mui/material'; // Importar componentes para feedback
+import { Button, Typography, CircularProgress } from '@mui/material'; 
+import axios from 'axios';
 
 export default function PacientData() {
-  // Desestructurar del contexto, asumiendo que los setters tienen los nombres correctos
+
   const { nombre, setNombre, apellido, setApellido, dni, setDni, email, setEmail } = useContext(VitaliaContext);
 
-  // Estados locales para manejar errores de validación y estado de carga/mensaje
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState(''); // 'success' o 'error'
 
-  // **Función genérica para manejar los cambios en cualquier TextField**
-  // Se usa el atributo 'name' del TextField para identificar qué estado actualizar
+  // Func para manejar cambios genéricos en los inputs
   const handleChange = (event) => {
-    const { name, value } = event.target; // Obtiene el 'name' y el 'value' del input que cambió
+    const { name, value } = event.target;
 
-    // Limpia el error del campo cuando el usuario empieza a escribir de nuevo
     setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
 
-    // Actualiza el estado correspondiente usando el 'name' del input
     switch (name) {
       case 'nombre':
         setNombre(value);
@@ -40,10 +37,9 @@ export default function PacientData() {
       default:
         break;
     }
-    // console.log(`${name}: ${value}`); // Para depuración
   };
 
-  // Función de validación de formulario
+  // Validación del front
   const validateForm = () => {
     let tempErrors = {};
     let isValid = true;
@@ -62,7 +58,7 @@ export default function PacientData() {
     } else if (!/^\d+$/.test(dni.trim())) {
       tempErrors.dni = 'El DNI debe contener solo números.';
       isValid = false;
-    } else if (dni.trim().length < 7 || dni.trim().length > 10) { // Ejemplo de longitud para DNI
+    } else if (dni.trim().length < 7 || dni.trim().length > 10) {
       tempErrors.dni = 'El DNI debe tener entre 7 y 10 dígitos.';
       isValid = false;
     }
@@ -74,29 +70,63 @@ export default function PacientData() {
       isValid = false;
     }
 
-    setErrors(tempErrors); // Actualiza el estado de errores
+    setErrors(tempErrors);
     return isValid;
   };
 
-  // Función de envío del formulario
-  const handleSubmit = () => {
-    setMessage(''); // Limpiar mensajes anteriores
+  // Envío del form al back
+  const handleSubmit = async () => {
+    setMessage('');
     setMessageType('');
 
     if (!validateForm()) {
       setMessage('Por favor, corrige los errores en el formulario.');
       setMessageType('error');
-      return; // Detiene el envío si la validación falla
+      return;
     }
 
-    setIsLoading(true); // Activa el estado de carga
-    console.log('Intentando enviar datos:', { nombre, apellido, dni, email });
-  }
+    setIsLoading(true);
+
+    try {
+      await axios.post('http://localhost:8080/pacientes', {
+        nombre,
+        apellido,
+        dni,
+        email
+      });
+
+      setMessage('Paciente creado exitosamente.');
+      setMessageType('success');
+
+      // Limpiar formulario
+      setNombre('');
+      setApellido('');
+      setDni('');
+      setEmail('');
+      setErrors({});
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        // Errores de validación del back c/express-validator
+        const backendErrors = error.response.data.errores;
+        const newErrors = {};
+        backendErrors.forEach(err => {
+          newErrors[err.param] = err.msg;
+        });
+        setErrors(newErrors);
+        setMessage('Ocurrieron errores al crear el paciente.');
+        setMessageType('error');
+      } else {
+        setMessage('Error inesperado al conectarse con el servidor.');
+        setMessageType('error');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Box
       component="form"
-      // Corrección en la sintaxis del objeto sx
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
         display: 'flex',
@@ -105,54 +135,63 @@ export default function PacientData() {
         borderRadius: '30px',
         textAlign: 'center',
         width: '25vw',
-        minWidth: '300px', // Añadido para mejor responsividad
-        padding: '20px' // Añadido para que el contenido no se pegue al borde
+        minWidth: '300px',
+        padding: '20px'
       }}
       noValidate
       autoComplete="off"
+      onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} // evitar recarga de página al hacer submit
     >
       <TextField
         value={nombre}
-        onChange={handleChange} // Usamos la función genérica
-        id="nombre-field" // ID único
-        name="nombre" // IMPORTANTE: Define el 'name'
+        onChange={handleChange}
+        id="nombre-field"
+        name="nombre"
         label="Nombre"
         variant="standard"
+        error={!!errors.nombre}
+        helperText={errors.nombre}
       />
       <TextField
         value={apellido}
-        onChange={handleChange} // Usamos la función genérica
-        id="apellido-field" // ID único
-        name="apellido" // IMPORTANTE: Define el 'name'
+        onChange={handleChange}
+        id="apellido-field"
+        name="apellido"
         label="Apellido"
         variant="standard"
+        error={!!errors.apellido}
+        helperText={errors.apellido}
       />
       <TextField
         value={dni}
-        onChange={handleChange} // Usamos la función genérica
-        id="dni-field" // ID único
-        name="dni" // IMPORTANTE: Define el 'name'
+        onChange={handleChange}
+        id="dni-field"
+        name="dni"
         label="DNI"
         variant="standard"
-        type="number" // Sugerencia para teclado numérico
-        inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} // Para mejor compatibilidad y accesibilidad
+        type="number"
+        inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+        error={!!errors.dni}
+        helperText={errors.dni}
       />
       <TextField
         value={email}
-        onChange={handleChange} // Usamos la función genérica
-        id="email-field" // ID único
-        name="email" // IMPORTANTE: Define el 'name'
+        onChange={handleChange}
+        id="email-field"
+        name="email"
         label="E-mail"
         variant="standard"
-        type="email" // Sugerencia para formato de email
+        type="email"
+        error={!!errors.email}
+        helperText={errors.email}
       />
 
-      {/* Mensajes de feedback para el usuario */}
       {message && (
         <Typography
           sx={{
             mt: 2,
-            textAlign: 'center'
+            textAlign: 'center',
+            color: messageType === 'error' ? 'red' : 'green',
           }}
         >
           {message}
@@ -164,13 +203,14 @@ export default function PacientData() {
         sx={{
           backgroundColor: '#00C3A5',
           '&:hover': { backgroundColor: '#00A88D' },
-          mt: 3, // Margen superior para separar del último TextField
-          height: '48px', // Altura fija para el spinner
+          mt: 3,
+          height: '48px',
         }}
-        onClick={handleSubmit}
+        type="submit"
+        disabled={isLoading}
         fullWidth
       >
-         Confirmar
+        {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Confirmar'}
       </Button>
     </Box>
   );
