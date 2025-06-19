@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { VitaliaContext } from '../contexts/vitaliaContext';
 
 import Box from '@mui/material/Box';
@@ -12,25 +12,13 @@ import '../css/Select.css'
 
 export default function BasicSelect() {
   const {especialidad, setEspecialidad} = useContext(VitaliaContext)
+  const {especialidadElegida, setEspecialidadElegida} = useContext(VitaliaContext)
   
   const handleChange = (event) => {
-    setEspecialidad(event.target.value);
-  };
-  
-  //PEDIDO A LA BD DE ESPECIALIDADES
-
-  const especialidadNames = [
-    'Alergeología',
-    'Cardiología',
-    'Clínica médica',
-    'Dermatología',
-    'Endocrinología',
-    'Oncología',
-    'Odontología',
-    'Traumatología',
-    'Osteología',
-    'Gastroenterología',
-  ];
+    const nombre = event.target.value
+    const seleccion = especialidad.find(e => e.nombre === nombre)
+    setEspecialidadElegida(seleccion)
+  }
 
   const MenuProps = {
     PaperProps: {
@@ -79,7 +67,7 @@ export default function BasicSelect() {
         <Select
           labelId="basic-select-label"
           id="basic-select"
-          value={especialidad}
+          value={especialidadElegida?.nombre || ''}
           label="Especialidad" 
           onChange={handleChange}
           MenuProps={MenuProps}
@@ -113,10 +101,10 @@ export default function BasicSelect() {
             },
           }}
         >
-          {especialidadNames.map((name) => (
+          {especialidad.map((esp) => (
             <MenuItem
-              key={name}
-              value={name}
+              key={esp.id}
+              value={esp.nombre}
               sx={{
                 backgroundColor: 'white', 
                 color: '#333',
@@ -135,7 +123,7 @@ export default function BasicSelect() {
                 },
               }}
             >
-              {name}
+              {esp.nombre}
             </MenuItem>
           ))}
         </Select>
