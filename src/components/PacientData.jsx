@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router';
 
 export default function PacientData() {
 
-  const { nombre, setNombre, apellido, setApellido, dni, setDni, email, setEmail } = useContext(VitaliaContext);
+  const { setPacienteid, nombre, setNombre, apellido, setApellido, dni, setDni, email, setEmail } = useContext(VitaliaContext);
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -94,12 +94,20 @@ export default function PacientData() {
     setIsLoading(true);
 
     try {
-      await axios.post('http://localhost:8080/pacientes', {
-        nombre,
-        apellido,
-        dni,
-        email
-      });
+    const res = await axios.post('http://localhost:8080/pacientes', {
+      nombre,
+      apellido,
+      dni,
+      email
+    });
+      const paciente = res.data.paciente;
+        setPacienteid(paciente.id); 
+        setNombre(paciente.nombre);
+        setApellido(paciente.apellido);
+        setDni(paciente.dni);
+        setEmail(paciente.email);
+
+  setMessage(res.data.mensaje);
 
       setMessage('Paciente creado exitosamente.');
       setMessageType('success');

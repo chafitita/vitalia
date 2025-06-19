@@ -2,17 +2,14 @@ import { Card, CardContent, Button, Typography } from "@mui/material";
 import { useContext } from 'react'
 import { VitaliaContext } from '../contexts/vitaliaContext'
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 import '../css/App.css'
 import '../css/ShiftCard.css'
 
 export default function ShiftCard(){
     const navigate = useNavigate()
-
-    const handleClick = () => {
-        navigate('/finalización')
-    }
-
+    
     const { 
     especialidadElegida,
     doctorElegido,
@@ -21,8 +18,19 @@ export default function ShiftCard(){
     nombre, 
     apellido, 
     dni, 
-    email 
-  } = useContext(VitaliaContext);
+    email,
+    pacienteid 
+    } = useContext(VitaliaContext);
+
+    const handleClick = () => {
+        axios.post('http://localhost:8080/turnos', {
+            paciente: pacienteid,
+            horarioturno: horarioElegido.id,
+            fecha: fecha
+        });
+        navigate('/finalización')
+    }
+
     
     return(
         <Card sx={{ maxWidth: 400, margin: 'auto', p: 2, display: 'scroll' }}>

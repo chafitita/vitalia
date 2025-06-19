@@ -35,11 +35,26 @@ export default function BasicDatePicker() {
 
   const navigate = useNavigate()
 
-  const handleClickHorario = (horario) => {
-    setHorario(horario);
-    setHorarioElegido(horario) //agarrado con alambres
-    navigate('/paciente')
-  }
+  const handleClickHorario = async (horario) => {
+    //acá le cambia el estado al horario
+    try {
+      await axios.put(`http://localhost:8080/horarios/${horario.id}`, {
+        ...horario, ocupado: true
+      });
+
+      setHorario(horario);
+      setHorarioElegido(horario);
+
+      //acá actualiza la lista d los horarios
+      const res = await axios.get(`http://localhost:8080/horarios?doctorId=${doctorElegido.id}`);
+      setHorariosDisponibles(res.data);
+
+      navigate('/paciente');
+    } catch (error) {
+      console.error('Detalles del error:', error.response?.data || error.message);
+      alert('No se pudo reservar el horario. Por favor, intentá de nuevo.');
+    }
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -82,6 +97,7 @@ export default function BasicDatePicker() {
                   key={index}
                   variant="contained"
                   onClick={() => handleClickHorario(horario)}
+                  disabled={horario.ocupado}
                   sx={{
                     backgroundColor: '#00C3A5',
                     color: 'white',
@@ -91,6 +107,12 @@ export default function BasicDatePicker() {
                     '&:hover': {
                       backgroundColor: '#00A88D',
                     },
+                    '&.Mui-disabled': {
+                      backgroundColor: '#009881',
+                      color: '#ffffff',
+                      opacity: 0.6,
+                      cursor: 'not-allowed',
+    }
                   }}
                 >
                   {horario.hora}

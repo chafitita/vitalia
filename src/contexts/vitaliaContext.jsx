@@ -42,6 +42,7 @@ export function VitaliaContextProvider(props){
     const [apellido, setApellido] = useState('')
     const [email, setEmail] = useState('')
     const [dni, setDni] = useState('')
+    const [pacienteid, setPacienteid] = useState('')
 
     const resetTurno = () => {
         setEspecialidad('')
@@ -71,8 +72,8 @@ export function VitaliaContextProvider(props){
         email, setEmail,
         dni, setDni,
         horarioElegido, setHorarioElegido,
+        pacienteid, setPacienteid,
         resetTurno
-
     }
     return(
         <VitaliaContext.Provider value={VitaliaData}>{props.children}</VitaliaContext.Provider>
