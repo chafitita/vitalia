@@ -11,6 +11,7 @@ export default function ShiftCard(){
     }
 
     const { especialidad, doctor, fecha, horario, nombre, apellido, dni, email } = useContext(VitaliaContext)
+    
     return(
         <Card sx={{ maxWidth: 400, margin: 'auto', p: 2 }}>
             <CardContent>

@@ -17,3 +17,28 @@
 .css-1hxdzvw-MuiButtonBase-root-MuiButton-root:hover{
     background-color: #cbcbcb !important;
 }
+
+.css-lqwr9g-MuiPickersOutlinedInput-notchedOutline{
+    border-color: #ffffff !important;
+}
+
+.content p{
+    font-size: 0.9rem;
+}
+
+.content button {
+    font-family: "Mukta Vaani", sans-serif;
+    font-weight: 500;
+    font-size: 1.5em;
+    margin-right: 0.1rem;
+    padding: 0.65vw;
+    border-radius: 2.5vw;
+    border: none;
+    background-color: #279281;
+    cursor: pointer;
+    margin-top: 0%;
+}
+
+.css-113d811-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: #ffffff;
+}

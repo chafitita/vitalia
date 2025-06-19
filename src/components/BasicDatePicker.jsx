@@ -73,7 +73,7 @@ export default function BasicDatePicker() {
           {mostrarHorarios.length > 0 ? (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
               {mostrarHorarios.map((horario, index) => (
-                <Button
+                <Button className='hora-button'
                   key={index}
                   variant="contained"
                   onClick={() => handleClickHorario(horario)}
