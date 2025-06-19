@@ -1,21 +1,29 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Grid, Dialog, DialogTitle, DialogContent, Typography, Button } from '@mui/material';
 import DoctorCard from './DoctorCard';
+import axios from 'axios';
 
 import { VitaliaContext } from '../contexts/vitaliaContext';
 
 import '../css/DoctorList.css'
 
-const doctores = [
-  { nombre: 'Mateo Levrino', clinica: 'Clínica Amarilla', consultorio:'A3' },
-  { nombre: 'Maria Romera', clinica: 'Clínica Azul' , consultorio:'C2'},
-  { nombre: 'Santiago Cezar', clinica: 'Clínica Roja' , consultorio:'B2'},
-  { nombre: 'Samir David Arab', clinica: 'Clínica Azul', consultorio:'C3'},
-];
-
 export default function DoctorList() {
-  const {doctor, setDoctor} = useContext(VitaliaContext)
 
+  const [doctoresFiltrados, setDoctoresFiltrados] = useState([])
+  const { especialidadElegida } = useContext(VitaliaContext);
+  const { doctorElegido, setDoctorElegido } = useContext(VitaliaContext);
+
+  useEffect(() => {
+    if (especialidadElegida && especialidadElegida.id) {
+      axios.get(`http://localhost:8080/doctores?especialidadId=${especialidadElegida.id}`)
+        .then((res) => {
+          setDoctoresFiltrados(res.data);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, [especialidadElegida]);
+
+  const {doctor, setDoctor} = useContext(VitaliaContext)
   const [dialogDoctor, setDialogDoctor] = useState(null)
 
   const handleCardClick = (doc) => {
@@ -28,16 +36,15 @@ export default function DoctorList() {
 
   const handleConfirmSelection = () => {
     if (dialogDoctor) {
-      setDoctor(dialogDoctor)
+      setDoctorElegido(dialogDoctor)
       setDialogDoctor(null)
-      alert(`Doctor ${dialogDoctor.nombre} seleccionado para el turno!`);
     }
   }
 
   return (
     <>
       <Grid container spacing={2} justifyContent="center">
-        {doctores.map((doc, index) => (
+        {doctoresFiltrados.map((doc, index) => (
           <DoctorCard
             key={index}
             doctor={doc}
