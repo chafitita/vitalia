@@ -5,6 +5,7 @@ import { useContext, useState } from 'react';
 import { VitaliaContext } from '../contexts/vitaliaContext';
 import { Button, Typography, CircularProgress } from '@mui/material'; 
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 export default function PacientData() {
 
@@ -73,11 +74,16 @@ export default function PacientData() {
     setErrors(tempErrors);
     return isValid;
   };
-
+  
+  const navigate = useNavigate()
   // Envío del form al back
   const handleSubmit = async () => {
     setMessage('');
     setMessageType('');
+
+    if (validateForm()) {
+      navigate('/confirmación')
+    }
 
     if (!validateForm()) {
       setMessage('Por favor, corrige los errores en el formulario.');
@@ -164,7 +170,6 @@ export default function PacientData() {
         label="DNI"
         variant="standard"
         type="number"
-        inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
         error={!!errors.dni}
         helperText={errors.dni}
       />

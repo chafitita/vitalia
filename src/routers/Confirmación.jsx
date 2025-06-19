@@ -5,11 +5,11 @@ export const Confirmación = () => {
   return (
     <>
       <div className="main">
-        <div className="content">
+        <div className="data-content">
           <h1>Paso 4</h1>
           <h2 className="sub-title">Confirmar datos</h2>
+          <ShiftCard />
         </div>
-        <ShiftCard />
       </div>
     </>
   )

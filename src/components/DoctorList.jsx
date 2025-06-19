@@ -3,6 +3,8 @@ import { Grid, Dialog, DialogTitle, DialogContent, Typography, Button } from '@m
 import DoctorCard from './DoctorCard';
 import axios from 'axios';
 
+import { useNavigate } from 'react-router';
+
 import { VitaliaContext } from '../contexts/vitaliaContext';
 
 import '../css/DoctorList.css'
@@ -34,10 +36,13 @@ export default function DoctorList() {
     setDialogDoctor(null)
   }
 
+  const navigate = useNavigate()
+
   const handleConfirmSelection = () => {
     if (dialogDoctor) {
       setDoctorElegido(dialogDoctor)
       setDialogDoctor(null)
+      navigate('/fecha-horario')
     }
   }
 
@@ -63,7 +68,7 @@ export default function DoctorList() {
             Consultorio: {dialogDoctor?.consultorio}
           </Typography>
           <Grid container spacing={2} sx={{ marginTop: '15px' }}>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Button
                 variant="contained"
                 sx={{
@@ -76,7 +81,7 @@ export default function DoctorList() {
                 Confirmar
               </Button>
             </Grid>
-            <Grid item xs={6}>
+            <Grid xs={6}>
               <Button
                 variant="outlined"
                 sx={{

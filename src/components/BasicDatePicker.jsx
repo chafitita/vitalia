@@ -10,13 +10,14 @@ import '../css/BasicDatePicker.css'
 
 import '../css/App.css'
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { VitaliaContext } from '../contexts/vitaliaContext';
 
 
 export default function BasicDatePicker() {
 
-  const {fecha, setFecha, horario, setHorario, doctorElegido} = useContext(VitaliaContext)
+  const {fecha, setFecha, horario, setHorario, doctorElegido, setHorarioElegido} = useContext(VitaliaContext)
   const [horariosDisponibles, setHorariosDisponibles] = useState([])
 
     useEffect(() => {
@@ -32,8 +33,12 @@ export default function BasicDatePicker() {
 
   const mostrarHorarios = fecha ? horariosDisponibles : []
 
+  const navigate = useNavigate()
+
   const handleClickHorario = (horario) => {
     setHorario(horario);
+    setHorarioElegido(horario) //agarrado con alambres
+    navigate('/paciente')
   }
 
   return (

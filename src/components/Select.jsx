@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useContext, useState } from 'react';
 import { VitaliaContext } from '../contexts/vitaliaContext';
 
+import { useNavigate } from 'react-router';
+
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -18,6 +20,12 @@ export default function BasicSelect() {
     const nombre = event.target.value
     const seleccion = especialidad.find(e => e.nombre === nombre)
     setEspecialidadElegida(seleccion)
+  }
+
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/doctor')
   }
 
   const MenuProps = {
@@ -128,6 +136,9 @@ export default function BasicSelect() {
           ))}
         </Select>
       </FormControl>
+      <button onClick={handleClick} className="especialidad-button">
+                Confirmar
+      </button>
     </Box>
   );
 }

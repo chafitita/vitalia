@@ -7,7 +7,7 @@ export const Home = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate('/pasos/especialidad')
+    navigate('/especialidad')
   }
 
   return (
