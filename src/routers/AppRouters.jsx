@@ -4,7 +4,7 @@ import { Especialidad }  from "./Especialidad"
 import { Doctor } from "./Doctor"
 import { FechaHorario } from "./FechaHorario"
 import { Confirmación } from "./Confirmación"
-import { Finalización } from "./finalización"
+import { Finalización } from "./Finalización"
 import { Paciente } from "./Paciente"
 
 
