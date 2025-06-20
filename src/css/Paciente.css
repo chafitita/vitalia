@@ -8,3 +8,7 @@
     padding: 0.8rem !important;
     margin: 0% !important;
 }
+
+#email-field-helper-text, #nombre-field-helper-text, #apellido-field-helper-text, #dni-field-helper-text{
+    font-size: 1rem !important;
+}

@@ -100,7 +100,10 @@ export default function BasicDatePicker() {
             </Box>
           ) : (
             <Typography variant="body1" color="white" className='peticion'>
-              Por favor, seleccioná una fecha para ver los horarios.
+              {fecha
+                ? 'No hay horarios disponibles para esta fecha.'
+                : 'Por favor, seleccioná una fecha para ver los horarios.'
+              }
             </Typography>
           )}
         </Box>

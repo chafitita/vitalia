@@ -86,7 +86,6 @@ export default function PacientData() {
     }
 
     if (!validateForm()) {
-      setMessage('Por favor, corrige los errores en el formulario.');
       setMessageType('error');
       return;
     }
