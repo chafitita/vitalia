@@ -63,6 +63,7 @@ export default function BasicDatePicker() {
         margin: '0.5em'
       }}>
         <DatePicker
+          disablePast
           label="Elegí una fecha"
           value={fecha}
           onChange={(newValue) => setFecha(newValue)}
