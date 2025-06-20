@@ -30,18 +30,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 80vh;
+    height: 100vh;
     justify-content: center;
 }
 
 .content p{
     font-weight: 300;
-    font-size: 0.7rem !important;
+    font-size: 1.2rem !important;
     width: fit-content !important;
 }
 .content h1{
     font-weight: 500;
-    font-size: 2.3rem;
+    font-size: 3.2rem;
     margin-bottom: 0rem;
     padding: 0%;
 }
@@ -62,4 +62,8 @@
 
 .title-confirmation{
     text-align: center;
+}
+/*---------------FINALIZACIÓN-------------------*/
+.finish-btn{
+    font-size: 1.2rem !important;
 }

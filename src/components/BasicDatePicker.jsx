@@ -20,7 +20,6 @@ export default function BasicDatePicker() {
 
   const navigate = useNavigate();
 
-  // ✅ Esta función se dispara al elegir una fecha
   const handleFechaChange = async (newValue) => {
     setFecha(newValue);
     const fechaFormateada = dayjs(newValue).format('YYYY-MM-DD');
@@ -29,14 +28,11 @@ export default function BasicDatePicker() {
         `http://localhost:8080/horarios/disponibles?doctorId=${doctorElegido.id}&fecha=${fechaFormateada}`
       );
       setHorariosDisponibles(res.data);
-    } catch (error) { //EXPLICARLE A GEMINI QUE FUNCIONA 
-    // A MEDIAS, QUE BORRA TODAS LAS FECHAS DEL DÍA EN LUGAR DE SOLO LA 
-    //QUE COINCIDE Y DARLE EJEMPLO COMO HACE EL USER
+    } catch (error) { 
       console.error("Error al cargar horarios disponibles:", error);
     }
   };
 
-  // ✅ Cuando el usuario hace clic en un horario
   const handleClickHorario = (horario) => {
     setHorario(horario);
     setHorarioElegido(horario);
@@ -103,7 +99,7 @@ export default function BasicDatePicker() {
               ))}
             </Box>
           ) : (
-            <Typography variant="body1" color="white">
+            <Typography variant="body1" color="white" className='peticion'>
               Por favor, seleccioná una fecha para ver los horarios.
             </Typography>
           )}

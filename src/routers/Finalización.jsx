@@ -7,6 +7,7 @@ export const Finalización = () => {
 
     const handleClick = () => {
         navigate('/')
+        window.location.reload();
   }
   return (
     <>
@@ -14,9 +15,9 @@ export const Finalización = () => {
             <div className="content">
               <h1>Su turno ha sido agendado exitosamente</h1>
               <h2 className="sub-title">Se enviará a su correo la información detallada del turno</h2>
-            </div>
-            <Button
+              <Button
                 variant="contained"
+                className='finish-btn'
                 sx={{
                     backgroundColor: '#279281',
                     marginTop: '1em',
@@ -26,6 +27,8 @@ export const Finalización = () => {
                 >
                 Volver al inicio
             </Button>
+            </div>
+            
         </div>
     </>
   )
