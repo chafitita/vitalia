@@ -42,3 +42,25 @@
 .css-113d811-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
     color: #ffffff;
 }
+.css-1chuxo2-MuiPickersCalendarHeader-label{
+    color: #279281 !important;
+    font-weight: bold !important;
+}
+.css-14yom7c-MuiSvgIcon-root-MuiPickersCalendarHeader-switchViewIcon{
+    fill: #333 !important;
+}
+.css-xp4e7m-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button.Mui-disabled{
+    background-color: #00c3a5 !important;
+}
+.css-1bsiu4i-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button{
+    background-color: #00c3a5 !important;
+}
+.css-15umtxl-MuiPickersArrowSwitcher-root{
+    gap: 0.125em !important;
+}
+.css-113d811-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color: white !important;
+}
+.css-xp4e7m-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button{
+    background-color: #00c3a5 !important;
+}

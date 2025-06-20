@@ -47,6 +47,7 @@ export default function BasicDatePicker() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DatePicker']} sx={{ borderTop: '1px solid white', margin: '0.5em' }}>
         <DatePicker
+          disablePast
           label="Elegí una fecha"
           value={fecha}
           onChange={handleFechaChange}
