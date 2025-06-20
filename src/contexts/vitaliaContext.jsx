@@ -26,17 +26,6 @@ export function VitaliaContextProvider(props){
           console.log("Error!:", error)
         })
     }
-    const handleHorarios = () => {
-    // Aquí puedes necesitar pasar el doctor o la fecha para obtener horarios específicos
-    axios.get(`http://localhost:8080/horarios/`)
-      .then((data) => {
-        console.log("horarios", data.data);
-        setHorario(data.data);
-      })
-      .catch((error) => {
-        console.error("Error al obtener horarios:", error);
-      });
-  };
 
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('')
