@@ -22,13 +22,21 @@
         pacienteid 
         } = useContext(VitaliaContext);
 
-        const handleClick = () => {
+        const handleClick = async () => {
             axios.post('http://localhost:8080/turnos', {
                 pacienteId: pacienteid,
                 horarioId: horarioElegido.id,
                 doctorId: doctorElegido.id,
                 fecha: fecha.toString()
             });
+            await axios.post('http://localhost:8080/send-mail' , {
+                email: email,
+                name: nombre, 
+                doctor: doctorElegido, 
+                especialidad: especialidadElegida, 
+                fecha: fecha,
+                hora: horarioElegido})
+
             navigate('/finalización')
         }
 
